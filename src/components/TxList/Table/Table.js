@@ -116,6 +116,7 @@ export default function(props) {
 
 	return (
 		<div className={cx("txListTableWrapper")}>
+			<div>TxList Table</div>
 			<Table className={cx("table")} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 				{txTableHeader}
 				{tableBodyRender}

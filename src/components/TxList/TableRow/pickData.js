@@ -19,15 +19,15 @@ const BASE_MULT = Math.pow(10, 8);
 export default function(blockData, cx, cell) {
 	switch (cell) {
 		case "Tx Hash":
-			if (!_.isNil(blockData.tx_hash))
+			if (!_.isNil(blockData.txhash))
 				return (
-					<NavLink className={cx("blueColor")} to={`/txs/${blockData.tx_hash}`}>
-						{reduceString(blockData.tx_hash, 6, 6)}
+					<NavLink className={cx("blueColor")} to={`/txs/${blockData.txhash}`}>
+						{reduceString(blockData.txhash, 6, 6)}
 					</NavLink>
 				);
 			return <Skeleton />;
 		case "Type":
-			if (!_.isNil(blockData?.messages?.[0]?.type)) return <span className={cx("type")}>{getTxType(blockData?.messages?.[0]?.type)}</span>;
+			if (!_.isNil(blockData?.tx?.type)) return <span className={cx("type")}>{getTxType(blockData?.tx?.type)}</span>;
 			return <Skeleton />;
 		case "From": {
 			// TODO

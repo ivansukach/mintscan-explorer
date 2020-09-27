@@ -38,6 +38,7 @@ export default Object.freeze({
 	GET_LOGO_LINK: symbol =>
 		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/thumnail/${_.split(symbol)[0]}}.png` : "",
 	API_BASE: api,
+	API_OCTA: `http://localhost:1317`,
 	API: {
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",

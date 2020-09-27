@@ -19,6 +19,7 @@ export default function(txType) {
 		case "LIST_TOKEN":
 		case DEX.LIST:
 			return "Listing";
+
 		case "FREEZE_TOKEN":
 		case TOKENS.FREEZE:
 			return "Freeze";

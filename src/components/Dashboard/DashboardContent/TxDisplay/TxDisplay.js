@@ -14,8 +14,12 @@ import TxDisplayTableRow from "./TableRow";
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [data, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
-
+	const [response, requestFetch] = useFetch(`${consts.API_OCTA}${consts.API.TXLIST}?limit=5&message.action=MakeTransferOfFunds`, "get");
+	// const [response, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
+	// alert(`API_BASE: ` + `${consts.API_BASE}`);
+	// alert(`TXLIST: ` + `${consts.API.TXLIST}`);
+	//alert("TxDisplay DATA: ", data);//object
+	// console.log("TxDisplay RequestFetch: ", requestFetch);//function
 	const [watching] = useTimer(true, consts.NUM.DASH_REAL_TIME_DELAY_MS);
 
 	React.useEffect(() => {
@@ -47,18 +51,18 @@ export default function(props) {
 	const tableBodyRender = React.useMemo(
 		() => (
 			<TableBody>
-				{_.map(data?.data?.data, (v, i) => (
+				{_.map(response?.data?.txs, (v, i) => (
 					<TxDisplayTableRow key={i} blockData={v} />
 				))}
 			</TableBody>
 		),
-		[data]
+		[response]
 	);
 
 	return React.useMemo(
 		() => (
 			<TableWrapper title={"TRANSACTIONS"} type={2}>
-				{data.error ? (
+				{response.error ? (
 					<ErrorPage />
 				) : (
 					<Table className={cx("TxDisplay-table")}>
@@ -68,6 +72,6 @@ export default function(props) {
 				)}
 			</TableWrapper>
 		),
-		[data.error, tableHeaderRender, tableBodyRender]
+		[response.error, tableHeaderRender, tableBodyRender]
 	);
 }

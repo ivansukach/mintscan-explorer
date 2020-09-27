@@ -1,6 +1,7 @@
 export default Object.freeze({
 	//  COSMOS
 	COSMOS: {
+		TRANSFER: "cosmos-sdk/StdTx",
 		SEND: "cosmos-sdk/Send",
 		PROPOSAL_SUBMIT: "cosmos-sdk/MsgSubmitProposal",
 		DEPOSIT: "cosmos-sdk/MsgDeposit",
