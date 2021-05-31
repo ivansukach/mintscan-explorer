@@ -30,14 +30,20 @@ export default function(state, action) {
 	switch (action.type) {
 		case INITIAL_LOAD: {
 			const {data, pageSize, index, maxIndex} = action.payload;
-			if (empty(data)) return {...state, error: true};
+			if (empty(data)) {
+				alert("ERROR");
+				return {...state, error: true};
+			}
 			return {...state, maxIndex, allData: data, isFront: true, index, pageSize, reset: 0};
 		}
 		case INITIAL_LOAD_QUERY: {
 			const {data, pageSize, index, maxIndex} = action.payload;
 			const allData = data;
-			if (_.isNil(allData)) return {...state, error: true};
-			return {...state, allData, isFront: false, index, pageSize, maxIndex, reset: 0, isNoMore: state.isNoMore === false && state.reset === 2};
+			if (_.isNil(allData)) {
+				alert("ERROR");
+				return {...state, error: true};
+			}
+			return {...state, allData: allData, isFront: false, index, pageSize, maxIndex, reset: 0, isNoMore: state.isNoMore === false && state.reset === 2};
 		}
 		case EXTRA_LOAD_INIT: {
 			return {...state, params: {after: action.payload.after}};
@@ -64,7 +70,9 @@ export default function(state, action) {
 			}
 		}
 		case EXTRA_LOAD_FAIL: {
-			if (state.params.after === true) return {...state, params: {after: null}, isFront: true};
+			if (state.params.after === true) {
+				return {...state, params: {after: null}, isFront: true};
+			}
 			return {...state, params: {after: null}, isFront: false, isNoMore: true};
 		}
 		case RECENT_DATA_LOAD: {

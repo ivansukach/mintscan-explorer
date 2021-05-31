@@ -34,7 +34,7 @@ import reducer, {
 export const SPARE_PAGE_CNT = 2; //  how many pages left before a refetch is triggered
 
 //  customized auto fetch + autofetch + pagination.
-export default function({path, pageSize = 20, pagingProperty = "height", limit = 60, resolve = undefined, updateQuery = ""}) {
+export default function({path, pageSize = 20, pagingProperty = "height", limit = 20, resolve = undefined, updateQuery = ""}) {
 	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialState, () => initialState);
 	const refinedQuery = useMemo(() => {
@@ -146,6 +146,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 					payload: {data: data.data, pageSize, index: [0, pageSize - 1], maxIndex: Number(data.paging.total)},
 				});
 			} else {
+				alert("SECOND INITIAL LOAD");
 				getInitialLoadQuery(refinedQuery, {
 					data: data.data,
 					maxIndex: Number(data.paging.total),
@@ -201,6 +202,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 			//  case, not enough left (pageSize*SPARE_PAGE_CNT) => trigger refetch
 			// console.log("compare", state.index[1] + pageSize, "??", state.allData.length - 1 - pageSize * SPARE_PAGE_CNT);
 			if (state.index[1] + pageSize > state.allData.length - 1 - pageSize * SPARE_PAGE_CNT && !state.isNoMore) {
+				// alert("REFETCH 1")
 				refetch({
 					path: getQueryParams(state.allData, state.params.after, pagingProperty, path, limit),
 				});
@@ -208,6 +210,7 @@ export default function({path, pageSize = 20, pagingProperty = "height", limit =
 		} else {
 			if (state.isFront === true) throw new Error("Exception - Attempt to trigger more recent data at front");
 			if (state.index[0] < SPARE_PAGE_CNT * (pageSize - 1))
+				// alert("REFETCH 2")
 				refetch({
 					path: getQueryParams(state.allData, state.params.after, pagingProperty, path, limit),
 				});

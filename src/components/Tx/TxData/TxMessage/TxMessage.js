@@ -4,7 +4,7 @@ import styles from "./TxMessage.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 import {divide, multiply} from "src/lib/Big";
-import {_, empty, formatNumber, getTotalTime, refineAddress} from "src/lib/scripts";
+import {_, empty, formatNumber, getTotalTime} from "src/lib/scripts";
 //  redux
 import {useSelector} from "react-redux";
 //  hooks
@@ -70,8 +70,8 @@ export default function({msg, txData}) {
 										<li className={cx("label")}>To</li>
 										<li className={cx("value")}>
 											{_.map(value.outputs, v => (
-												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${refineAddress(v.address)}`}>
-													<DisplayLongString inputString={refineAddress(v.address)} />
+												<NavLink key={v.address} className={cx("blueColor")} to={`/account/${v.address}`}>
+													<DisplayLongString inputString={v.address} />
 												</NavLink>
 											))}
 										</li>

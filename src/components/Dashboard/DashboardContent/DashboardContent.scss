@@ -6,18 +6,17 @@
 	$linkWrapperHeight: 288px;
 
 	.PriceGraphClickable-wrapper {
-		display: grid;
+		//display: grid;
 
-		grid-template-columns: 864px 320px;
-		grid-template-rows: 1fr;
-		grid-column-gap: 15px;
-		grid-row-gap: 15px;
+		//grid-template-columns: 864px 320px;
+		//grid-template-rows: 1fr;
+		//grid-column-gap: 15px;
+		//grid-row-gap: 15px;
 		//grid-auto-flow: dense;
 
 		// 832.7 31.3px 964
 		@include media("<large") {
 			grid-template-columns: 1fr;
-			grid-template-rows: 1fr 150px;
 		}
 
 		@include media("<medium") {
@@ -103,8 +102,7 @@
 		@include card-nopadding-wrapper;
 	}
 }
-x
-.CardFixed {
+x .CardFixed {
 	@include card-nopadding-wrapper;
 }
 

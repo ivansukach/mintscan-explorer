@@ -1,5 +1,5 @@
 import React from "react";
-import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
+import {_, formatNumber, reduceString} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 import {NavLink} from "react-router-dom";
@@ -22,7 +22,7 @@ export default function(data, cx, cell, account) {
 					return <span>Multi send</span>;
 				}
 				const senderIsAcc = data.fromAddr === account;
-				const baseAddr = refineAddress(senderIsAcc ? data.toAddr : data.fromAddr);
+				const baseAddr = senderIsAcc ? data.toAddr : data.fromAddr;
 				return (
 					<NavLink className={cx("NavLink")} to={`/account/${baseAddr}`}>
 						<img src={senderIsAcc ? redArrowSVG : greenArrowSVG} alt={"arrow"} />

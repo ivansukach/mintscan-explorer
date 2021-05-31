@@ -49,9 +49,7 @@ export default function(props) {
 				<div className={cx("Card", "PriceGraph-wrapper")}>
 					<PriceDisplay />
 					<GraphDisplay />
-					<LinkCardInside />
 				</div>
-				<LinkCard />
 			</div>
 			<div className={cx("BlockTx-wrapper")}>
 				<BlocksDisplay />

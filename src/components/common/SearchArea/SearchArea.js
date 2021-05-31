@@ -152,7 +152,7 @@ export default function({propCx, dropdownStyle = {}, interactiveWidth = false}) 
 		() => (
 			<InputBase
 				className={propCx("input")}
-				placeholder='Search by Block, transaction, asset, address or orderid...'
+				placeholder='Search by Address, Block Height, TxHash'
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
 				onChange={onChange}

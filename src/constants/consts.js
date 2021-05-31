@@ -39,6 +39,7 @@ export default Object.freeze({
 		_.isString(symbol) ? `https://raw.githubusercontent.com/cosmostation/cosmostation_token_resource/master/thumnail/${_.split(symbol)[0]}}.png` : "",
 	API_BASE: api,
 	API_OCTA: `http://localhost:1317`,
+	API_RATES_INFO: `http://localhost:4040`,
 	API: {
 		STATUS: "/status",
 		BLOCKLIST: "/blocks",
@@ -82,7 +83,7 @@ export default Object.freeze({
 		IOS: "https://apple.co/2IAM3Xm",
 		WEB: "https://wallet.cosmostation.io",
 		COSMOSTATION: "https://www.cosmostation.io/",
-		BINANCEDEX: "https://www.binance.org/",
+		OCTACOIN: "https://octa-coin.com/",
 		COINGECKO_BINANCE: "https://www.coingecko.com/en/coins/binance-coin",
 	},
 
@@ -101,12 +102,8 @@ export default Object.freeze({
 			route: "/txs",
 		},
 		{
-			display: "ASSETS",
-			route: "/assets",
-		},
-		{
-			display: "BINANCE DEX",
-			route: "/dex",
+			display: "OCTA COIN",
+			route: "https://octa-coin.com/",
 		},
 	],
 });

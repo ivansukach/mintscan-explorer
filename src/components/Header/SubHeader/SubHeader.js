@@ -27,11 +27,11 @@ export default function(props) {
 	const handleClick = useCallback(
 		(e, route) => {
 			if (_.isEqual(window.location.pathname, route)) e.preventDefault();
-			if (route === "/dex") {
+			if (route === "https://octa-coin.com/") {
 				e.preventDefault();
-				window.open(consts.LINK.BINANCEDEX, "_blank");
+				window.open(consts.LINK.OCTACOIN, "_blank");
 			}
-			setNavBarOpen(false);
+			setNavBarOpen(true);
 		},
 		[setNavBarOpen]
 	);

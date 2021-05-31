@@ -1,0 +1,268 @@
+@font-face {
+	font-family: "houschka_roundedbold";
+	src: url("../fonts/houschka_rounded_bold.eot");
+	src: url("../fonts/houschka_rounded_bold.eot?#iefix") format("embedded-opentype"), url("../fonts/houschka_rounded_bold.woff2") format("woff2"),
+		url("../fonts/houschka_rounded_bold.woff") format("woff"), url("../fonts/houschka_rounded_bold.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+* {
+	outline: none;
+}
+img,
+a img {
+	border: none;
+	outline: none;
+}
+a {
+	text-decoration: none;
+	color: #7a7a7a;
+	transition: all 0.2s ease;
+}
+a:hover {
+	color: #121212;
+}
+button {
+	border: none;
+	color: #fff;
+	line-height: 22px;
+	height: 36px;
+	padding: 6px 15px;
+	font-family: "houschka_roundedbold";
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+	font-size: 12px;
+	box-sizing: border-box;
+	transition: all 0.3s ease;
+	font-weight: 400;
+	border-radius: 5px;
+}
+button:hover {
+	background-color: #121212;
+	color: #fff;
+}
+p {
+	margin: 0;
+	padding: 0;
+}
+.oh {
+	overflow: hidden;
+}
+.cnt {
+	width: 1170px;
+	margin: 0 auto;
+}
+.clr:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.col2 {
+	width: 48.717948717949%;
+}
+.col2 {
+	margin-bottom: 30px;
+	margin-right: 2.5641025641026%;
+	float: left;
+}
+.col2:nth-child(2n) {
+	margin-right: 0 !important;
+}
+.col2:nth-child(2n + 1) {
+	clear: left;
+}
+.col2 * {
+	max-width: 100%;
+}
+.button {
+	display: inline-block;
+	transition: all 0.3s ease;
+	border-radius: 100px;
+	text-transform: uppercase;
+	font-family: "houschka_roundedbold";
+	letter-spacing: 0.05em;
+}
+.button.big {
+	line-height: 42px;
+	height: 40px;
+	padding: 0 30px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.button.color {
+	color: #fff;
+}
+.button.color:hover {
+	background-color: #121212;
+}
+.title {
+	margin-bottom: 50px;
+}
+.title p {
+	max-width: 570px;
+	margin: 0;
+	padding: 0;
+}
+.do-it {
+	background: #fff;
+	padding: 40px 0;
+}
+.do-it .button {
+	float: right;
+}
+.do-it-text {
+	margin-right: 220px;
+}
+.do-it-text-big {
+	font-size: 19px;
+	color: #121212;
+	display: block;
+	margin-bottom: 3px;
+	font-family: "houschka_roundedbold";
+	text-transform: uppercase;
+}
+#footer {
+	background: #1f1f1f;
+	padding: 40px 0 0;
+	color: #a7a7a7;
+}
+.footer-logo {
+	color: #fff;
+	font-size: 30px;
+	line-height: 30px;
+	font-family: "houschka_roundedbold";
+}
+.footer-soc {
+	margin-top: 30px;
+}
+a.soc {
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	border-radius: 50px;
+	background: #a7a7a7;
+	color: #121212;
+	text-align: center;
+}
+a.soc .fa {
+	line-height: 50px;
+	font-size: 18px;
+}
+.footer-soc a.soc {
+	float: left;
+	margin-right: 10px;
+}
+.footer-block {
+	float: left;
+	width: 48.275862068966%;
+	margin-right: 2.5641025641026%;
+}
+.footer-block:nth-child(2n) {
+	margin-right: 0;
+}
+.footer-block:nth-child(2n + 1) {
+	clear: left;
+}
+.footer-block-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	font-family: "houschka_roundedbold";
+}
+.footer-block ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.footer-block ul li {
+	margin: 0;
+	padding: 9px 0 9px 2px;
+}
+.footer-block ul li .fa {
+	padding-right: 10px;
+}
+.footer-block ul a {
+	color: #a7a7a7;
+	display: inline-block;
+}
+.footer-block ul a:hover {
+	margin-left: 7px;
+}
+.copyrights {
+	background: #1a1a1a;
+	text-align: center;
+	color: #a7a7a7;
+	padding: 20px 0;
+}
+.copyrights a {
+	color: #a7a7a7;
+}
+.copyrights a:hover {
+	color: #fff;
+}
+@media (max-width: 1279px) {
+	.cnt {
+		width: auto;
+		margin-left: 50px;
+		margin-right: 50px;
+	}
+}
+@media (max-width: 991px) {
+	#footer > .cnt > .col2 {
+		float: none;
+		width: 100%;
+		margin-right: 0;
+	}
+	.col2 .col2 {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+	}
+}
+@media (max-width: 567px) {
+	.cnt {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+	.col2,
+	.footer-block {
+		width: 100%;
+		float: none;
+		margin-right: 0;
+	}
+	.footer-block {
+		margin-bottom: 50px;
+	}
+	.footer-block:last-child {
+		margin-bottom: 0;
+	}
+	.do-it {
+		text-align: center;
+	}
+	.do-it-text {
+		margin-right: 0;
+	}
+	.do-it .button {
+		float: none;
+		margin-bottom: 20px;
+	}
+	#footer .soc {
+		margin-bottom: 10px;
+	}
+}
+::selection {
+	background-color: #0b89ff;
+}
+button,
+.button.color,
+a.soc:hover {
+	background-color: #0b89ff;
+}
+.do-it-text-big span,
+.footer-block ul a:hover {
+	color: #0b89ff;
+}

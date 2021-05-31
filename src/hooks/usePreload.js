@@ -4,7 +4,13 @@ import axios from "axios";
 import consts from "src/constants/consts";
 //  reduxy
 import {getCryptoAssets, getCryptoBep8} from "src/store/modules/assets";
-import {getCryptoBasicData, getCryptoFees, getCryptoStatus, getCryptoValidators, getCyptoAcceleratedNode} from "src/store/modules/blockchain";
+import {
+	getCryptoBasicData,
+	//getCryptoFees,
+	getCryptoStatus,
+	getCryptoValidators,
+	//getCyptoAcceleratedNode
+} from "src/store/modules/blockchain";
 //  hooks
 
 export default function usePreload() {
@@ -14,10 +20,12 @@ export default function usePreload() {
 	useEffect(() => {
 		const cancelToken = axios.CancelToken;
 		const source = cancelToken.source();
-		dispatch(getCyptoAcceleratedNode());
-		dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+		// dispatch(getCyptoAcceleratedNode());
+		if (window.location.pathname === "/") {
+			dispatch(getCryptoBasicData(source.token));
+		}
 		dispatch(getCryptoStatus(source.token));
-		dispatch(getCryptoFees(source.token));
+		// dispatch(getCryptoFees(source.token));
 		dispatch(getCryptoValidators(source.token));
 		if (window.location.pathname !== "/assets/") {
 			dispatch(getCryptoAssets(source.token));
@@ -30,7 +38,7 @@ export default function usePreload() {
 		const interval = setInterval(() => {
 			const cancelToken = axios.CancelToken;
 			const source = cancelToken.source();
-			dispatch(getCryptoBasicData("binancecoin", "usd", source.token));
+			dispatch(getCryptoBasicData(source.token));
 
 			//  spacing out the request
 			//  probably won't need a cleanup function because it's never unloaded

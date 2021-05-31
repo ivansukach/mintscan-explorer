@@ -1,7 +1,7 @@
 @import "../../../styles/utils";
 
 .SearchAppBar-root {
-	background-image: linear-gradient(to right, #f0b90b, #fbd93a);
+	background-image: linear-gradient(0deg, #ffffff, #c5dde8);
 	height: var(--heightHeader);
 	width: 100%;
 	z-index: 100;
@@ -120,7 +120,7 @@
 				font-size: 15px;
 				line-height: 2.67;
 				cursor: pointer;
-				
+
 				height: 40px;
 
 				display: flex;
@@ -184,14 +184,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		
+
 		cursor: pointer;
 		border: 0;
 		width: 45px;
 		height: 35px;
 		background: var(--colorSearchInput);
 		padding: 0 2px;
-		
+
 		.searchIcon {
 			width: 24px;
 			height: 24px;

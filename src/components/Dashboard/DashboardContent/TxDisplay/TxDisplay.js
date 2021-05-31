@@ -14,8 +14,8 @@ import TxDisplayTableRow from "./TableRow";
 const cx = cn.bind(styles);
 
 export default function(props) {
-	const [response, requestFetch] = useFetch(`${consts.API_OCTA}${consts.API.TXLIST}?limit=5&message.action=MakeTransferOfFunds`, "get");
-	// const [response, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
+	// const [response, requestFetch] = useFetch(`${consts.API_OCTA}${consts.API.TXLIST}?limit=5&message.action=MakeTransferOfFunds`, "get");
+	const [response, requestFetch] = useFetch(`${consts.API_BASE}${consts.API.TXLIST}?limit=5`, "get");
 	// alert(`API_BASE: ` + `${consts.API_BASE}`);
 	// alert(`TXLIST: ` + `${consts.API.TXLIST}`);
 	//alert("TxDisplay DATA: ", data);//object
@@ -51,7 +51,7 @@ export default function(props) {
 	const tableBodyRender = React.useMemo(
 		() => (
 			<TableBody>
-				{_.map(response?.data?.txs, (v, i) => (
+				{_.map(response?.data?.data, (v, i) => (
 					<TxDisplayTableRow key={i} blockData={v} />
 				))}
 			</TableBody>

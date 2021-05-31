@@ -31,9 +31,7 @@ export const TableRowThin = ({blockData}) => {
 			</ul>
 			<ul className={cx("row")}>
 				<li>Value</li>
-				<li>
-					{pickData(blockData, cx, CELL_TYPES[4])} {pickData(blockData, cx, CELL_TYPES[5])}
-				</li>
+				<li>{pickData(blockData, cx, CELL_TYPES[4])} OCTA</li>
 			</ul>
 			<ul className={cx("row")}>
 				<li>height</li>
@@ -72,7 +70,7 @@ export default function({blockData}) {
 				{pickData(blockData, cx, CELL_TYPES[4])}
 			</TableCell>
 			<TableCell className={cx("tablePointerMiniCell", "padding-left10")} align='left'>
-				{pickData(blockData, cx, CELL_TYPES[5])}
+				OCTA
 			</TableCell>
 			<TableCell className={cx("tablePointerMiniCell")} align='right'>
 				{blockData.height ? (

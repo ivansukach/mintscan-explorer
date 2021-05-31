@@ -94,7 +94,7 @@ const yAxis = {
 	tickPosition: "inside",
 };
 const series = {
-	color: "#ebba16",
+	color: "#0080ff",
 	fillColor: {
 		linearGradient: {
 			x1: 0,
@@ -106,14 +106,14 @@ const series = {
 			[
 				0,
 				highcharts
-					.color("#ffda5e")
+					.color("#0080ff")
 					.setOpacity(0.6)
 					.get("rgba"),
 			],
 			[
 				0.6,
 				highcharts
-					.color("#ffda5e")
+					.color("#0080ff")
 					.setOpacity(0.2)
 					.get("rgba"),
 			],

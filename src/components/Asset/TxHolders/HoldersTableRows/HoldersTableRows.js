@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames/bind";
 import styles from "./HoldersTableRows.scss";
 
-import {_, formatNumber, reduceString, refineAddress} from "src/lib/scripts";
+import {_, formatNumber, reduceString} from "src/lib/scripts";
 //  components
 import {TableCell, TableRow} from "@material-ui/core";
 import Skeleton from "react-skeleton-loader";
@@ -33,8 +33,8 @@ export const ThinTableRows = ({holder = {}, rank = null}) => {
 				</li>
 				<li>
 					{holder?.address ? (
-						<NavLink className={cx("blueColor")} to={`/account/${refineAddress(holder?.address)}`}>
-							{reduceString(refineAddress(holder?.address), 6, 6)}
+						<NavLink className={cx("blueColor")} to={`/account/${holder?.address}`}>
+							{reduceString(holder?.address, 6, 6)}
 						</NavLink>
 					) : (
 						<Skeleton />
@@ -106,8 +106,8 @@ export default function HoldersTableRows({holder = {}, rank = null}) {
 			</TableCell>
 			<TableCell className={cx("tableCell", "text")} component='th' scope='row'>
 				{holder.address ? (
-					<NavLink className={cx("blueColor")} to={`/account/${refineAddress(holder.address)}`}>
-						{reduceString(refineAddress(holder.address), 6, 6)}
+					<NavLink className={cx("blueColor")} to={`/account/${holder.address}`}>
+						{reduceString(holder.address, 6, 6)}
 					</NavLink>
 				) : (
 					<Skeleton width={"80px"} widthRandomness={0} />

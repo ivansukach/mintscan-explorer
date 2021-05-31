@@ -29,7 +29,7 @@ export default function(props) {
 		path: consts.API.BLOCKLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
-		limit: 60,
+		limit: 20,
 		resolve: v => v,
 		updateQuery: "blockHeight",
 	});
@@ -48,13 +48,14 @@ export default function(props) {
 		// eslint-disable-next-line
 	}, [realTime, state.isFront]);
 
-	const onePageClick = (after = false) => {
+	const nextPageClick = (after = false) => {
 		if (after && state.isFront) return;
 		if (realTime && !after) {
 			// console.log("setRealTimeFalse");
 			setRealTime(false);
 		}
 		if (!after && state.index[1] + state.pageSize > state.maxIndex) return;
+		alert("UPDATE PAGE");
 		updateCurrentPage(after);
 		// console.log("clicked next");
 	};
@@ -122,7 +123,7 @@ export default function(props) {
 				{blocksHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, onePageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
+			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, nextPageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
 			<div className={cx("thinTable")}>{thinTableBodyRender}</div>
 		</div>
 	);

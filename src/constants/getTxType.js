@@ -16,6 +16,12 @@ export default function(txType) {
 		case COSMOS.SEND:
 			return "Transfer";
 
+		case "send":
+			return "Transfer";
+
+		case COSMOS.TRANSFER:
+			return "Transfer";
+
 		case "LIST_TOKEN":
 		case DEX.LIST:
 			return "Listing";

@@ -3,7 +3,7 @@ import styles from "./TxTableRows.scss";
 import cn from "classnames/bind";
 import {NavLink} from "react-router-dom";
 
-import {_, formatNumber, reduceString, refineAddress, setAgoTime} from "src/lib/scripts";
+import {_, formatNumber, reduceString, setAgoTime} from "src/lib/scripts";
 import {fixed} from "src/lib/Big";
 import getTxType from "src/constants/getTxType";
 //  components
@@ -43,8 +43,8 @@ export const ThinTableRow = ({asset = {}}) => {
 				<li className={cx("flexIt", {transfer: !_.isNil(asset.toAddr)})}>
 					{asset.fromAddr ? (
 						<>
-							<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.fromAddr)}`}>
-								{reduceString(refineAddress(asset.fromAddr), 6, 6)}
+							<NavLink className={cx("blueColor")} to={`/account/${asset.fromAddr}`}>
+								{reduceString(asset.fromAddr, 6, 6)}
 							</NavLink>
 							{asset.txType !== "TRANSFER" ? (
 								undefined
@@ -52,8 +52,8 @@ export const ThinTableRow = ({asset = {}}) => {
 								<>
 									<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
 									{asset.toAddr ? (
-										<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.toAddr)}`}>
-											{reduceString(refineAddress(asset.toAddr), 6, 6)}
+										<NavLink className={cx("blueColor")} to={`/account/${asset.toAddr}`}>
+											{reduceString(asset.toAddr, 6, 6)}
 										</NavLink>
 									) : (
 										undefined
@@ -120,8 +120,8 @@ export default function TxTableRows({asset = {}}) {
 				<span className={cx("flexIt")}>
 					{asset.fromAddr ? (
 						<>
-							<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.fromAddr)}`}>
-								{reduceString(refineAddress(asset.fromAddr), 6, 6)}
+							<NavLink className={cx("blueColor")} to={`/account/${asset.fromAddr}`}>
+								{reduceString(asset.fromAddr, 6, 6)}
 							</NavLink>
 							{asset.txType !== "TRANSFER" ? (
 								undefined
@@ -129,8 +129,8 @@ export default function TxTableRows({asset = {}}) {
 								<>
 									<SvgDisplay svgSrc={greenArrowSVG} customClass={"upsideDown"} />
 									{asset.toAddr ? (
-										<NavLink className={cx("blueColor")} to={`/account/${refineAddress(asset.toAddr)}`}>
-											{reduceString(refineAddress(asset.toAddr), 6, 6)}
+										<NavLink className={cx("blueColor")} to={`/account/${asset.toAddr}`}>
+											{reduceString(asset.toAddr, 6, 6)}
 										</NavLink>
 									) : (
 										undefined
