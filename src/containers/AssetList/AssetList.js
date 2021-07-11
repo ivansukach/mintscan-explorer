@@ -4,7 +4,7 @@ import styles from "./AssetList.scss";
 import {_, empty} from "src/lib/scripts";
 //  redux
 import {useDispatch, useSelector} from "react-redux";
-import {getCryptoAssets, getCryptoBep8} from "src/store/modules/assets";
+// import {getCryptoAssets, getCryptoBep8} from "src/store/modules/assets";
 //  hooks
 import {useFetch, useIncrementalListLoader} from "src/hooks";
 //  components
@@ -24,8 +24,8 @@ export default function(props) {
 	const [incrementalAssets, filledAssets, setAssets] = useIncrementalListLoader();
 
 	React.useEffect(() => {
-		if (empty(assets)) dispatch(getCryptoAssets());
-		if (empty(bep8Assets)) dispatch(getCryptoBep8());
+		// if (empty(assets)) dispatch(getCryptoAssets());
+		// if (empty(bep8Assets)) dispatch(getCryptoBep8());
 	}, [assets, dispatch, tab]);
 
 	React.useEffect(() => {

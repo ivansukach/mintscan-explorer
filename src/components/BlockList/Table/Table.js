@@ -4,13 +4,12 @@
  * A LOT of refactoring will probably be needed if attempted to fix.
  * You have been warned
  */
-import React, {useCallback, useEffect, useMemo} from "react";
+import React, {useCallback, useMemo} from "react";
 import styles from "./Table.scss";
 import classNames from "classnames/bind";
 //  utils
 import consts from "src/constants/consts";
 import useIndexedPagination from "src/hooks/useIndexedPagination";
-import {usePrevious} from "src/hooks";
 import {_, empty, formatNumber} from "src/lib/scripts";
 // components
 import {Fade, Table, TableBody, TableCell, TableHead, TableRow, Tooltip} from "@material-ui/core";
@@ -25,7 +24,14 @@ const BASE_PROPERTY = "height";
 const PAGE_SIZE = 20;
 
 export default function(props) {
-	const [, , state, updateCurrentPage, jumpToEnd, [realTime, setRealTime]] = useIndexedPagination({
+	const [
+		state,
+		jumpToEnd,
+		jumpToStart,
+		nextPage,
+		previousPage,
+		// [realTime, setRealTime],
+	] = useIndexedPagination({
 		path: consts.API.BLOCKLIST,
 		pageSize: PAGE_SIZE,
 		pagingProperty: BASE_PROPERTY,
@@ -33,36 +39,43 @@ export default function(props) {
 		resolve: v => v,
 		updateQuery: "blockHeight",
 	});
-	const previousIsFront = usePrevious(state.isFront);
+	// const previousIsFront = usePrevious(state.isFront);
 
-	useEffect(() => {
-		if (empty(state.index)) return;
-		const isFrontToTrue = state.isFront === true && previousIsFront === false;
-		if (realTime === false && isFrontToTrue && state.pageData[state.index[0]]?.[BASE_PROPERTY] === state.maxIndex) {
-			// console.log("setRealTimeTrue");
-			setRealTime(true);
-		} else if (state.index[0] !== 0 && realTime === true) {
-			// console.log("setRealTimeFalse");
-			setRealTime(false);
-		}
-		// eslint-disable-next-line
-	}, [realTime, state.isFront]);
+	// useEffect(() => {
+	// 	if (empty(state.index)) return;
+	// 	const isFrontToTrue = state.isFront === true && previousIsFront === false;
+	// 	if (realTime === false && isFrontToTrue && state.pageData[state.index[0]]?.[BASE_PROPERTY] === state.maxIndex) {
+	// 		// console.log("setRealTimeTrue");
+	// 		setRealTime(true);
+	// 	} else if (state.index[0] !== 0 && realTime === true) {
+	// 		// console.log("setRealTimeFalse");
+	// 		setRealTime(false);
+	// 	}
+	// 	// eslint-disable-next-line
+	// }, [realTime, state.isFront]);
 
-	const nextPageClick = (after = false) => {
-		if (after && state.isFront) return;
-		if (realTime && !after) {
-			// console.log("setRealTimeFalse");
-			setRealTime(false);
-		}
-		if (!after && state.index[1] + state.pageSize > state.maxIndex) return;
-		alert("UPDATE PAGE");
-		updateCurrentPage(after);
-		// console.log("clicked next");
-	};
+	// const nextPage = () => {
+	//     alert("NEXT PAGE")
+	//     // if (after && state.isFront) return;
+	//     // if (realTime && !after) {
+	//     // 	// console.log("setRealTimeFalse");
+	//     // 	setRealTime(false);
+	//     // }
+	//     // if (!after && state.index[1] + state.pageSize > state.maxIndex) return;
+	//     // alert("UPDATE PAGE");
+	//     // updateCurrentPage(after);
+	//     // console.log("clicked next");
+	// };
+	// const previousPage = () => {
+	//     alert("PREVIOUS PAGE")
+	// };
 	const formattedMaxHeight = useMemo(() => formatNumber(state.maxIndex, 3), [state.maxIndex]);
 	// console.log("check", state.maxIndex, state.pageData[0]?[BASE_PROPERTY]);
 
 	const tableBodyRender = useMemo(() => {
+		// for(let i of state.allData.keys()) {
+		//
+		// }
 		return (
 			<TableBody>
 				{_.map(
@@ -70,7 +83,10 @@ export default function(props) {
 						? Array.from({length: PAGE_SIZE}, (z, idx) => ({id: idx}))
 						: state.pageData,
 					(v, idx) => {
-						if (v === undefined) return <BlockListTableRow key={idx} blockData={{}} />;
+						if (v === undefined) {
+							alert("undefined");
+							return <BlockListTableRow key={idx} blockData={{}} />;
+						}
 						// TODO - fix this
 						//  it is optimal to use 'v[BASE_PROPERTY]' as key but it scrolls to bottom of page
 						//  current approach rerenders entire list on each rerender - needs to be optimized
@@ -102,28 +118,43 @@ export default function(props) {
 		);
 	}, [state.pageData]);
 
-	const realTimeButtonClick = e => {
-		e.preventDefault();
-		if (!state.isFront) return;
-		// if (realTime === true) forceLoadAfter(true);
-		// console.log("setRealTime click", !realTime);
-		setRealTime(v => !v);
-	};
-
-	const onMouseEnter = useCallback(() => setRealTime(false), [setRealTime]);
+	// const realTimeButtonClick = e => {
+	// 	e.preventDefault();
+	// 	if (!state.isFront) return;
+	// 	// if (realTime === true) forceLoadAfter(true);
+	// 	// console.log("setRealTime click", !realTime);
+	// 	setRealTime(v => !v);
+	// };
+	//
+	// const onMouseEnter = useCallback(() => setRealTime(false), [setRealTime]);
+	// const onMouseLeave = useCallback(() => {
+	// 	if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
+	// 	setRealTime(true);
+	// 	// eslint-disable-next-line
+	// }, [setRealTime, state.isFront]);
+	const onMouseEnter = useCallback(() => {
+		// alert("MOUSE ENTER")
+	});
 	const onMouseLeave = useCallback(() => {
-		if (!state.isFront || state.maxIndex !== state.pageData?.[0]?.[BASE_PROPERTY]) return;
-		setRealTime(true);
-		// eslint-disable-next-line
-	}, [setRealTime, state.isFront]);
-
+		// alert("MOUSE LEAVE")
+	});
 	return (
 		<div className={cx("blockListtableWrapper")}>
 			<Table className={cx("table")} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 				{blocksHeaderRender}
 				{tableBodyRender}
 			</Table>
-			{footerRender(state, realTime, realTimeButtonClick, formattedMaxHeight, nextPageClick, BASE_PROPERTY, INDEX_DISPLAY_DECIMAL_PLACES, jumpToEnd)}
+			{footerRender(
+				state,
+				// realTime, realTimeButtonClick,
+				formattedMaxHeight,
+				nextPage,
+				previousPage,
+				BASE_PROPERTY,
+				INDEX_DISPLAY_DECIMAL_PLACES,
+				jumpToEnd,
+				jumpToStart
+			)}
 			<div className={cx("thinTable")}>{thinTableBodyRender}</div>
 		</div>
 	);

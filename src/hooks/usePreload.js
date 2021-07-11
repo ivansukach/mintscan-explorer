@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import axios from "axios";
 import consts from "src/constants/consts";
 //  reduxy
-import {getCryptoAssets, getCryptoBep8} from "src/store/modules/assets";
+// import {getCryptoAssets, getCryptoBep8} from "src/store/modules/assets";
 import {
 	getCryptoBasicData,
 	//getCryptoFees,
@@ -27,10 +27,10 @@ export default function usePreload() {
 		dispatch(getCryptoStatus(source.token));
 		// dispatch(getCryptoFees(source.token));
 		dispatch(getCryptoValidators(source.token));
-		if (window.location.pathname !== "/assets/") {
-			dispatch(getCryptoAssets(source.token));
-			dispatch(getCryptoBep8(source.token));
-		}
+		// if (window.location.pathname !== "/assets/") {
+		// 	dispatch(getCryptoAssets(source.token));
+		// 	dispatch(getCryptoBep8(source.token));
+		// }
 	}, [dispatch]);
 
 	//  getWithInterval BASIC_DATA_FETCH_INTERVAL_MS
